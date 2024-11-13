@@ -106,7 +106,7 @@
                 href="{{route('get.random.message')}}"
                 class="desktop-nav-link"
             >
-                Random Message
+                Random
             </a>
 
             <a
@@ -233,7 +233,7 @@
                             href="{{route('get.random.message')}}"
                             class="mobile-nav-link"
                         >
-                            Random Message
+                            Random
                         </a>
 
                         <a

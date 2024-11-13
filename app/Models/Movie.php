@@ -17,7 +17,8 @@ class Movie extends Model
     protected $appends = [
         'icon_image',
         'medium_image',
-        'generated_slug'
+        'generated_slug',
+        'release_date_formated'
     ];
 
     protected $guarded = [];
@@ -27,17 +28,24 @@ class Movie extends Model
         return str()->slug($this->name) . '-' . HashIds::encode($this->id);
     }
 
+    public function getReleaseDateFormatedAttribute()
+    {
+        return $this->release_date->format('jS \o\f F, Y');
+    }
+
     protected function iconImage(): Attribute
     {
         return Attribute::make(
             get: function () {
                 if (!$this->cover_image) {
-                    return null;
+                    return asset('posters/poster_vertical_small.webp');
                 }
-                $iconPath = 'games/icons/' . pathinfo($this->cover_image, PATHINFO_FILENAME) . '.webp';
-                return Storage::disk('public')->exists($iconPath)
-                    ? asset("storage/$iconPath")
-                    : asset("storage/$this->cover_image");
+
+                if ($this->is_external_image) {
+                    return "https://image.tmdb.org/t/p/w342$this->cover_image";
+                }
+
+                return asset('posters/poster_vertical_small.webp');
             }
         );
     }
@@ -47,14 +55,14 @@ class Movie extends Model
         return Attribute::make(
             get: function () {
                 if (!$this->cover_image) {
-                    return null;
+                    return asset('posters/poster_vertical_medium.webp');
                 }
 
-                $mediumPath = 'games/medium/' . pathinfo($this->cover_image, PATHINFO_FILENAME) . '.webp';
+                if ($this->is_external_image) {
+                    return "https://image.tmdb.org/t/p/w500$this->cover_image";
+                }
 
-                return Storage::disk('public')->exists($mediumPath)
-                    ? asset("storage/$mediumPath")
-                    : asset("storage/$this->cover_image");
+                return asset('posters/poster_vertical_medium.webp');
             }
         );
     }

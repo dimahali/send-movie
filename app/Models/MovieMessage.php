@@ -17,6 +17,15 @@ use Vinkla\Hashids\Facades\Hashids;
 
 class MovieMessage extends Model
 {
+    protected $appends = [
+        'message_date'
+    ];
+
+    public function getMessageDateAttribute()
+    {
+        return $this->created_at->format('jS \o\f F, Y');
+    }
+
     public function getGeneratedSlugAttribute()
     {
         return HashIds::encode($this->id);

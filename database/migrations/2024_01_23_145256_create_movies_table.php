@@ -25,6 +25,9 @@ return new class extends Migration {
 
             $table->text('cover_image')->nullable();
 
+            $table->string('trailer_url', 2083)->nullable();
+            $table->json('secondary_movie_urls')->nullable();
+
             $table->boolean('is_external_image')->default(false);
             $table->boolean('is_adult_movie')->default(false);
 

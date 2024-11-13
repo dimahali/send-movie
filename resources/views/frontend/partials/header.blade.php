@@ -4,13 +4,31 @@
     class="sticky top-0 border bg-white border-gray-200 dark:bg-gray-900 inset-x-0 z-50"
 >
 
-    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
          aria-label="Main Navigation for Desktop">
 
-        <div class="flex lg:flex-1">
+        <div class="flex items-center lg:flex-1">
             <a href="/" class="-m-1.5 p-1.5">
-                {{config('app.name')}}
+                <img src="{{asset('send_the_movie_logo_sm.webp')}}"
+                     alt="{{config('app.name')}}"
+                     class="w-10"
+                >
             </a>
+            <button
+                class="inline-flex items-center text-lg text-rose-700 dark:text-slate-100"
+                @click="open_search_modal = true"
+                aria-label="Novel Search Button"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke-width="1"
+                     stroke="currentColor"
+                     class="size-9">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                </svg>
+            </button>
         </div>
 
         <div class="flex items-center align-center lg:hidden">
@@ -109,12 +127,12 @@
                 Random
             </a>
 
-            <a
-                href="#"
+            <button
+                @click="open_search_modal = true"
                 class="desktop-nav-link"
             >
                 Browse
-            </a>
+            </button>
 
         </div>
 
@@ -199,8 +217,11 @@
             @click.away="open = false"
         >
             <div class="flex items-center justify-between">
-                <a href="#" class="-m-1.5 p-1.5">
-                    {{config('app.name')}}
+                <a href="/" class="-m-1.5 p-1.5">
+                    <img src="{{asset('send_the_movie_logo_sm.webp')}}"
+                         alt="{{config('app.name')}}"
+                         class="w-10"
+                    >
                 </a>
 
                 <button
@@ -237,7 +258,7 @@
                         </a>
 
                         <a
-                            href="#"
+                            @click="open_search_modal = true;open=false"
                             class="mobile-nav-link"
                         >
                             Browse

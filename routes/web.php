@@ -7,7 +7,9 @@ use App\Http\Controllers\GameGenreController;
 use App\Http\Controllers\GameRatingController;
 use App\Http\Controllers\GameThemeController;
 use App\Http\Controllers\GameViewController;
+use App\Http\Controllers\MovieMessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecipientController;
 use App\Http\Controllers\RemoveGameBookmarkController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserBookmarksController;
@@ -18,21 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 Route::get('/search', SearchController::class)->name('search');
 
-Route::get('/latest', [GameController::class, 'latest'])->name('games.latest');
-Route::get('/top-rated', [GameController::class, 'topRated'])->name('games.top-rated');
-Route::get('/popular', [GameController::class, 'popular'])->name('games.popular');
-
-Route::redirect('/most-viewed', '/popular', 301);
-
-Route::get('/play/{game_slug}', [GameController::class, 'show'])->name('game.show');
-Route::post('/game/{game_slug}/rate', GameRatingController::class)->name('game.rate');
-Route::post('/game/{game_slug}/viewed', GameViewController::class)->name('game.viewed');
-
-Route::get('/categories', [GameGenreController::class, 'index'])->name('categories');
-Route::get('/category/{category_slug}', [GameGenreController::class, 'show'])->name('category.show');
-
-Route::get('/themes', [GameThemeController::class, 'index'])->name('themes');
-Route::get('/theme/{theme_slug}', [GameThemeController::class, 'show'])->name('theme.show');
+Route::get('/r/{recipient_slug}', [RecipientController::class, 'show'])->name('recipient.show');
+Route::get('/m/{message_slug}', [MovieMessageController::class, 'show'])->name('message.show');
 
 Route::get('/random-message', function () {
 

@@ -66,16 +66,16 @@
                         {{$message->movieReaction->text}} {{$message->movieReaction->emojis}}
                     </div>
 
-                    <blockquote class="text-xl text-gray-700 text-center">
-                        {{$message->message}}
+                    <blockquote class="prose text-xl text-gray-700 text-center">
+                        {!!$message->message_display !!}
                     </blockquote>
 
                     <div class="mt-4 text-sm italic">
                         Sent on {{$message->message_date}}
                     </div>
                 </div>
-                <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2">
-                    <a href="#"
+                <div class="text-center my-12">
+                    <a href="{{route('get.message.now')}}"
                        class="px-3 py-2 bg-green-700 hover:bg-green-600 text-white rounded-md"
                     >
                         Send Message

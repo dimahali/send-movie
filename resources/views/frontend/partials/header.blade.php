@@ -1,12 +1,10 @@
 <header
     x-data="{ open: false }"
     @keydown.window.escape="open = false"
-    class="sticky top-0 border bg-white border-gray-200 dark:bg-gray-900 inset-x-0 z-50"
+    class="sticky top-0 border-b bg-amber-50 border-amber-200 dark:bg-gray-900 inset-x-0 z-50"
 >
-
-    <nav class="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-8"
          aria-label="Main Navigation for Desktop">
-
         <div class="flex items-center lg:flex-1">
             <a href="/" class="-m-1.5 p-1.5">
                 <img src="{{asset('send_the_movie_logo_sm.webp')}}"
@@ -17,7 +15,7 @@
             <button
                 class="inline-flex items-center text-lg text-rose-700 dark:text-slate-100"
                 @click="open_search_modal = true"
-                aria-label="Novel Search Button"
+                aria-label="Search for Message Receiver"
             >
                 <svg xmlns="http://www.w3.org/2000/svg"
                      fill="none"
@@ -32,67 +30,6 @@
         </div>
 
         <div class="flex items-center align-center lg:hidden">
-
-            <button
-                type="button"
-                x-bind:class="dark_mode ? 'bg-rose-600' : 'bg-gray-200'"
-                x-on:click="dark_mode = !dark_mode"
-                class="relative inline-flex h-6 w-11 mr-4 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-rose-600 focus:ring-offset-2"
-                role="switch"
-                aria-checked="false"
-            >
-                <span class="sr-only">Dark mode toggle</span>
-
-                <span
-                    x-bind:class="dark_mode ? 'trangray-x-5 bg-gray-700' : 'trangray-x-0 bg-white'"
-                    class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full shadow ring-0 transition duration-200 ease-in-out"
-                >
-                                    <span
-                                        x-bind:class="
-                                            dark_mode
-                                                ? 'opacity-0 ease-out duration-100'
-                                                : 'opacity-100 ease-in duration-200'
-                                        "
-                                        class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
-                                        aria-hidden="true"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 text-gray-400"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                        >
-                                            <path
-                                                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
-                                            />
-                                        </svg>
-                                    </span>
-
-                                    <span
-                                        x-bind:class="
-                                            dark_mode
-                                                ? 'opacity-100 ease-in duration-200'
-                                                : 'opacity-0 ease-out duration-100'
-                                        "
-                                        class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
-                                        aria-hidden="true"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 text-white"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                        >
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                                clip-rule="evenodd"
-                                            />
-                                        </svg>
-                                    </span>
-                                </span>
-            </button>
-
             <button
                 type="button"
                 class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-300"
@@ -115,89 +52,28 @@
                     ></path>
                 </svg>
             </button>
-
         </div>
 
         <div class="hidden lg:flex lg:gap-x-2">
-
-            <a
-                href="{{route('get.random.message')}}"
-                class="desktop-nav-link"
-            >
-                Random
-            </a>
-
             <button
                 @click="open_search_modal = true"
                 class="desktop-nav-link"
             >
                 Browse
             </button>
-
-        </div>
-
-        <div class="hidden place-items-center items-center lg:flex lg:flex-1 lg:justify-end">
-
-            <button
-                type="button"
-                x-bind:class="dark_mode ? 'bg-rose-500' : 'bg-gray-200'"
-                x-on:click="dark_mode = !dark_mode"
-                class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
-                role="switch"
-                aria-checked="false"
+            <a
+                href="{{route('get.message.now')}}"
+                class="desktop-nav-link"
             >
-                <span class="sr-only">Dark mode toggle</span>
-
-                <span
-                    x-bind:class="dark_mode ? 'trangray-x-5 bg-gray-700' : 'trangray-x-0 bg-white'"
-                    class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full shadow ring-0 transition duration-200 ease-in-out"
-                >
-                    <span
-                        x-bind:class="
-                            dark_mode
-                                ? 'opacity-0 ease-out duration-100'
-                                : 'opacity-100 ease-in duration-200'
-                        "
-                        class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
-                        aria-hidden="true"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-3 w-3 text-gray-400"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                        >
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
-                        </svg>
-                    </span>
-
-                    <span
-                        x-bind:class="
-                            dark_mode
-                                ? 'opacity-100 ease-in duration-200'
-                                : 'opacity-0 ease-out duration-100'
-                        "
-                        class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
-                        aria-hidden="true"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-3 w-3 text-white"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                clip-rule="evenodd"
-                            />
-                        </svg>
-                    </span>
-                </span>
-            </button>
-
+                Submit
+            </a>
+            <a
+                href="{{route('get.random.message')}}"
+                class="desktop-nav-link"
+            >
+                Random
+            </a>
         </div>
-
     </nav>
 
     <nav
@@ -245,33 +121,29 @@
             </div>
 
             <div class="mt-6 flow-root">
-
                 <div class="-my-6 divide-y divide-gray-500/10">
-
                     <div class="space-y-2 py-6">
-
+                        <button
+                            @click="open_search_modal = true;open=false"
+                            class="mobile-nav-link"
+                        >
+                            Browse
+                        </button>
+                        <a
+                            href="{{route('get.message.now')}}"
+                            class="mobile-nav-link"
+                        >
+                            Submit
+                        </a>
                         <a
                             href="{{route('get.random.message')}}"
                             class="mobile-nav-link"
                         >
                             Random
                         </a>
-
-                        <a
-                            @click="open_search_modal = true;open=false"
-                            class="mobile-nav-link"
-                        >
-                            Browse
-                        </a>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </nav>
-
 </header>

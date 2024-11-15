@@ -18,7 +18,8 @@ class Movie extends Model
         'icon_image',
         'medium_image',
         'generated_slug',
-        'release_date_formated'
+        'release_date_formated',
+        'release_year'
     ];
 
     protected $guarded = [];
@@ -31,6 +32,11 @@ class Movie extends Model
     public function getReleaseDateFormatedAttribute()
     {
         return $this->release_date->format('jS \o\f F, Y');
+    }
+
+    public function getReleaseYearAttribute()
+    {
+        return $this->release_date->year;
     }
 
     protected function iconImage(): Attribute

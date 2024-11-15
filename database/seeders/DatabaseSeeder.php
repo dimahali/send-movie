@@ -205,6 +205,8 @@ class DatabaseSeeder extends Seeder
 
                 $movies[] = [
                     'user_id' => $user->id,
+                    'tmdb_id' => trim($record[0]),
+                    'imdb_id' => trim($record[12]),
                     'language_id' => $language->id,
                     'title' => Str::of(strtolower(trim($record[1])))->title(),
                     'status' => trim($record[4]),

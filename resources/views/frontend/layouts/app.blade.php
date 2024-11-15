@@ -1,27 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-      x-data="{ dark_mode: false, openFilter: false, open_search_modal:false }"
-      x-init="
-              if (!('dark_mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                localStorage.setItem('dark_mode', JSON.stringify(true));
-              }
-              dark_mode = JSON.parse(localStorage.getItem('dark_mode'));
-              $watch('dark_mode', value => localStorage.setItem('dark_mode', JSON.stringify(value)))
-              "
-      x-cloak
-      x-bind:class="{'dark' : dark_mode === true}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="{open_search_modal:false }">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="google-adsense-account" content="ca-pub-3489282767302861">
     <title>@yield('title') | {{config('app.name')}}</title>
-
     @yield('seo')
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset('apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{asset('apple-icon-60x60.png')}}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{asset('apple-icon-72x72.png')}}">
@@ -42,26 +29,23 @@
     @vite(['resources/css/app.css'])
 
     @yield('styles')
-
 </head>
 
 <body class="bg-white dark:bg-slate-800 text-sm sm:text-base">
-
 @include('frontend.partials.header')
-
 @yield('content')
-
 @include('frontend.partials.footer')
-
 <div x-data="{ search: '', results: [] }">
     <div x-show="open_search_modal"
+         x-trap="open_search_modal"
          class="fixed inset-0 z-40 flex items-center justify-center bg-gray-900 bg-opacity-50">
         <div @click.away="open_search_modal = false; results=[];search=''"
              class="relative bg-transparent rounded-lg shadow-lg w-11/12 max-w-lg">
             <input type="text"
+                   x-ref="searchInput"
                    x-model="search"
                    @input="fetchResults"
-                   placeholder="Search..."
+                   placeholder="Start Typing..."
                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"/>
 
             <div x-show="results.length > 0" class="mt-2 bg-white border border-gray-200 rounded-lg shadow-md">
@@ -72,13 +56,14 @@
                 </template>
             </div>
 
-            <div x-show="results.length === 0 && search !== ''" class="mt-2 p-2 text-center bg-white border border-gray-200 rounded-lg shadow-md">
+            <div x-show="results.length === 0 && search !== ''"
+                 class="mt-2 p-2 text-center bg-white border border-gray-200 rounded-lg shadow-md">
                 No results found
             </div>
         </div>
     </div>
 </div>
-
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
 <script>
     function fetchResults() {

@@ -38,6 +38,10 @@ class MovieMessage extends Model
     {
         return Str::limit($this->message, 87);
     }
+    public function getMessageDisplayAttribute()
+    {
+        return nl2br(e($this->message));
+    }
 
     public function scopeOfRecipient(Builder $query, $recipient_id): Builder
     {

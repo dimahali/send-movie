@@ -58,16 +58,17 @@
 
                         <div class="mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
                             <div class="rounded-md shadow">
-                                <a href="#"
+                                <a href="{{route('get.message.now')}}"
                                    class="flex w-full items-center justify-center rounded-md border border-transparent bg-rose-600 px-8 py-3 text-base font-medium text-white hover:bg-rose-700 md:px-10 md:py-4 md:text-lg">
                                     Send a Message
                                 </a>
                             </div>
                             <div class="mt-3 rounded-md shadow sm:ml-3 sm:mt-0">
-                                <a href="#"
-                                   class="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-rose-600 hover:bg-gray-50 md:px-10 md:py-4 md:text-lg">
+                                <button
+                                    @click="open_search_modal=true"
+                                    class="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-rose-600 hover:bg-gray-50 md:px-10 md:py-4 md:text-lg">
                                     Browse
-                                </a>
+                                </button>
                             </div>
                         </div>
 
@@ -79,37 +80,32 @@
 
         </section>
 
-        <section class="bg-white py-16">
+        <section class="py-16" style="background: url({{asset('cover.webp')}}); background-size: cover">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl lg:mx-0">
-                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">We are
-                        growing together</h2>
-                    <p class="mt-6 text-base/7 text-gray-600">We are getting more and more support</p>
-                </div>
-                <div
-                    class="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end">
+               <div
+                    class="mx-auto flex max-w-2xl flex-col gap-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-end">
                     <div
-                        class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-50 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
-                        <p class="flex-none text-3xl font-bold tracking-tight text-gray-900">{{formatNumbers($total_messages)}}</p>
+                        class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-50 border border-gray-200 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
+                        <p class="flex-none text-3xl font-bold tracking-tight text-gray-800">{{formatNumbers($total_messages)}}</p>
                         <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
-                            <p class="text-lg font-semibold tracking-tight text-gray-900">Messages Sent</p>
+                            <p class="text-lg font-semibold tracking-tight text-gray-700">Messages Sent</p>
                             <p class="mt-2 text-base/7 text-gray-600">You are loving it</p>
                         </div>
                     </div>
                     <div
-                        class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-900 p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44">
-                        <p class="flex-none text-3xl font-bold tracking-tight text-white">{{formatNumbers($total_movies)}}</p>
+                        class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-lime-50 border border-lime-200 p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44">
+                        <p class="flex-none text-3xl font-bold tracking-tight text-lime-800">{{formatNumbers($total_movies)}}</p>
                         <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
-                            <p class="text-lg font-semibold tracking-tight text-white">Movies added</p>
-                            <p class="mt-2 text-base/7 text-gray-400">We are adding more movies everyday</p>
+                            <p class="text-xl font-semibold tracking-tight text-lime-700">Movies</p>
+                            <p class="mt-2 text-base/7 text-lime-600">We are adding more movies everyday</p>
                         </div>
                     </div>
                     <div
-                        class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-indigo-600 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
-                        <p class="flex-none text-3xl font-bold tracking-tight text-white">{{formatNumbers(130248)}}</p>
+                        class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-indigo-50 border border-indigo-200 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
+                        <p class="flex-none text-3xl font-bold tracking-tight text-indigo-800">{{formatNumbers(130248)}}</p>
                         <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
-                            <p class="text-lg font-semibold tracking-tight text-white">Daily Visitors</p>
-                            <p class="mt-2 text-base/7 text-indigo-200">We are getting noticed</p>
+                            <p class="text-lg font-semibold tracking-tight text-indigo-700">Daily Visitors</p>
+                            <p class="mt-2 text-base/7 text-indigo-600">We are getting noticed</p>
                         </div>
                     </div>
                 </div>
@@ -168,7 +164,6 @@
             </div>
 
         </section>
-
     </main>
 @stop
 

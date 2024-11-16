@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\TagResource\Pages;
 
-use Str;
 use App\Filament\Resources\TagResource;
 use Filament\Resources\Pages\CreateRecord;
+use Str;
 
 class CreateTag extends CreateRecord
 {

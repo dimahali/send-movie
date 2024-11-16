@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="{open_search_modal:false }">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+      x-data="{open_search_modal:false }"
+      x-cloak
+>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="google-adsense-account" content="ca-pub-3489282767302861">
     <title>@yield('title') | {{config('app.name')}}</title>
     @yield('seo')
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,10 +29,8 @@
     <meta name="msapplication-TileImage" content="{{asset('ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">
     @vite(['resources/css/app.css'])
-
     @yield('styles')
 </head>
-
 <body class="bg-white dark:bg-slate-800 text-sm sm:text-base">
 @include('frontend.partials.header')
 @yield('content')
@@ -67,7 +67,6 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
 <script>
     function fetchResults() {
-
         if (this.search.length <= 3) {
             return false;
         }
@@ -75,7 +74,7 @@
         fetch(`/search?query=${this.search}`)
             .then(response => response.json())
             .then(data => this.results = data)
-            .catch(error => console.error('Error fetching search results:', error));
+            .catch();
     }
 </script>
 @yield('scripts')

@@ -2,18 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\Genre;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteBulkAction;
+use App\Filament\Resources\GenreResource\Pages\CreateGenre;
 use App\Filament\Resources\GenreResource\Pages\EditGenre;
 use App\Filament\Resources\GenreResource\Pages\ListGenres;
-use App\Filament\Resources\GenreResource\Pages\CreateGenre;
+use App\Models\Genre;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class GenreResource extends Resource
 {

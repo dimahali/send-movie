@@ -2,17 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMoveMessageRequest;
-use App\Models\MessageRecipient;
 use App\Models\Movie;
-use App\Models\MovieMessage;
-use App\Models\MovieReaction;
-use Exception;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
-use Response;
-use Vinkla\Hashids\Facades\Hashids;
 use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller

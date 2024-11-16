@@ -28,7 +28,7 @@
 
                 @if(session('message_url'))
                     <div class="my-4 p-4 bg-gray-100 rounded">
-                        <label class="block text-gray-700 font-medium">Message URL:</label>
+                        <label class="block text-gray-700 font-medium leading-none mb-1">Message URL:</label>
                         <div class="flex items-center space-x-2">
                             <input id="message_url"
                                    type="text"
@@ -95,7 +95,7 @@
                                     <input id="combobox"
                                            type="text"
                                            x-model="query"
-                                           @input.debounce="fetchMovies"
+                                           @input.debounce.300ms="fetchMovies"
                                            placeholder="Search movie..."
                                            class="form-input"
                                            role="combobox"

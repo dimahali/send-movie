@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use App\Models\User;
-use App\Models\Movie;
 use App\Models\Genre;
-use App\Observers\UserObserver;
+use App\Models\Movie;
+use App\Models\User;
 use App\Observers\GameObserver;
 use App\Observers\GenreObserver;
+use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

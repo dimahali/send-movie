@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\CommentResource\Pages;
 
-use Filament\Resources\Components\Tab;
 use App\Filament\Resources\CommentResource;
 use Filament\Actions;
+use Filament\Resources\Components\Tab;
 use Filament\Resources\Pages\ListRecords;
 
 class ListComments extends ListRecords

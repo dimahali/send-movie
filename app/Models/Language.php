@@ -4,10 +4,10 @@ namespace App\Models;
 
 use App\Enums\LanguageDirection;
 use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
-use Illuminate\Database\Eloquent\Model;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Language extends Model

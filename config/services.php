@@ -42,4 +42,8 @@ return [
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
         'redirect' => env('FACEBOOK_CALLBACK_URL'),
     ],
+    'tmdb' => [
+        'api_token' => env('TMDB_API_TOKEN'),
+        'base_url' => 'https://api.themoviedb.org/3',
+    ],
 ];

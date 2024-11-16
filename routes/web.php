@@ -6,8 +6,6 @@ use App\Http\Controllers\MovieMessageController;
 use App\Http\Controllers\RandomMessageController;
 use App\Http\Controllers\RecipientController;
 use App\Http\Controllers\SearchController;
-use App\Models\Movie;
-use App\Models\MovieMessage;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,7 +23,6 @@ Route::get('/random-message', [RandomMessageController::class, 'index'])->name('
 Route::prefix('api')
     ->name('api.')
     ->group(function () {
-        Route::post('/random-message', [RandomMessageController::class, 'load'])->name('random.message');
         Route::post('/movies', [ApiController::class, 'movies'])->name('movies');
         Route::post('/topics', [ApiController::class, 'topics'])->name('topics');
     });

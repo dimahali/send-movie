@@ -5,10 +5,7 @@ namespace App\Providers;
 use App\Enums\UserType;
 use Filament\Facades\Filament;
 use Filament\Navigation\NavigationGroup;
-use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Opcodes\LogViewer\Facades\LogViewer;
 

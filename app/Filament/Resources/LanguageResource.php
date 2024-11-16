@@ -2,18 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms\Form;
-use App\Models\Language;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteBulkAction;
+use App\Filament\Resources\LanguageResource\Pages\CreateLanguage;
 use App\Filament\Resources\LanguageResource\Pages\EditLanguage;
 use App\Filament\Resources\LanguageResource\Pages\ListLanguages;
-use App\Filament\Resources\LanguageResource\Pages\CreateLanguage;
+use App\Models\Language;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class LanguageResource extends Resource
 {

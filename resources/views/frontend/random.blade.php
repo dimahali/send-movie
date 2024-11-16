@@ -37,22 +37,65 @@
                              width="112px"
                              height="168px"
                              alt="{{$message->movie->title}}"
-                             id="movie-poster"
                         >
                     </div>
                     <div class="flex flex-col justify-around">
-                        <h2 class="text-xl font-bold text-rose-700"
-                            id="movie-title"
-                        >
+                        <h2 class="text-xl font-bold text-rose-700">
                             {{$message->movie->title}}
                         </h2>
-                        <p id="movie-genres">{{$message->movie->genres}}</p>
-                        <p id="movie-status">{{$message->movie->status}}</p>
-                        <p id="movie-release-date">{{$message->movie->release_date_formated}}</p>
+                        <p>{{$message->movie->genres}}</p>
+                        <p>{{$message->movie->status}}</p>
+                        <p>{{$message->movie->release_date_formated}}</p>
                     </div>
                 </div>
 
             </div>
+
+            @if($message->movie->videos)
+                <div x-data="modalHandler()" class="mb-8">
+                    <h2 class="h2 text-center mb-4">Videos for {{$message->movie->title}}</h2>
+                    <div class="flex flex-col gap-2 text-center items-center justify-center">
+                        @foreach($message->movie->videos as $video)
+                            <button
+                                class="branding-badge"
+                                @click="openVideoModal('https://www.youtube.com/embed/{{$video['key']}}', '{{$video['name']}}')"
+                            >
+                                Watch {{$video['name']}}
+                            </button>
+                        @endforeach
+                    </div>
+
+                    <div
+                        x-show="is_modal_open"
+                        @click.self="closeVideoModal"
+                        class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+                        <div class="rounded-lg overflow-hidden w-11/12 md:w-3/4 lg:w-1/2 aspect-video">
+                            <div class="flex justify-between items-center px-4 py-2 bg-gray-800 text-white">
+                                <div class="text-lg" x-text="video_title"></div>
+                                <button
+                                    @click="closeVideoModal"
+                                    class="text-white hover:text-gray-400"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         fill="none"
+                                         viewBox="0 0 24 24"
+                                         stroke-width="1.5"
+                                         stroke="currentColor"
+                                         class="size-8">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <iframe
+                                :src="video_url"
+                                class="w-full aspect-video rounded-br rounded-bl"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            @endif
 
             <div
                 class="mx-auto max-w-2xl text-sm leading-6 text-gray-700">
@@ -65,59 +108,48 @@
                     class="text-center text-base">
                     <div
                         class="text-base inline-flex text-center mb-4 rounded-md bg-green-50 border border-green-200 px-3 py-1.5"
-                        id="movie-reaction"
-                    >
+                        >
                         {{$message->movieReaction->text}} {{$message->movieReaction->emojis}}
                     </div>
 
-                    <blockquote class="text-xl text-gray-700 text-center" id="movie-message">
+                    <blockquote class="text-xl text-gray-700 text-center">
                         {{$message->message}}
                     </blockquote>
 
-                    <div id="message-date" class="mt-4 text-sm italic">
+                    <div class="mt-4 text-sm italic">
                         Sent on {{$message->message_date}}
                     </div>
                 </div>
+
                 <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2">
-                    <button onclick="fetchMovieMessage()"
+                    <a href="{{route('get.random.message')}}"
                             class="px-3 py-2 bg-green-700 hover:bg-green-600 text-white rounded-md">
                         Load More
-                    </button>
+                    </a>
                 </div>
-
             </div>
-
         </div>
 
     </main>
-
+@stop
+@section('scripts')
     <script>
-        function fetchMovieMessage() {
-            fetch("{{route('api.random.message')}}", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        function modalHandler() {
+            return {
+                is_modal_open: false,
+                video_title: '',
+                video_url: '',
+                openVideoModal(url, title) {
+                    this.video_url = url;
+                    this.video_title = title;
+                    this.is_modal_open = true;
+                },
+                closeVideoModal() {
+                    this.is_modal_open = false;
+                    this.video_title = '';
+                    this.video_url = '';
                 }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('movie-poster').src = data.movie.icon_image;
-                    document.getElementById('movie-title').innerText = data.movie.title;
-                    document.getElementById('movie-genres').innerText = data.movie.genres;
-                    document.getElementById('movie-status').innerText = data.movie.status;
-                    document.getElementById('movie-message').innerText = data.message;
-                    document.getElementById('recipient').innerText = data.recipient_title;
-                    document.getElementById('movie-reaction').innerText = data.movie_reaction.text + ' ' + data.movie_reaction.emojis;
-                    document.getElementById('message-date').innerText = "Sent on " + data.message_date;
-                })
-                .catch(error => {
-                    console.error('Error fetching message:', error);
-                });
+            };
         }
     </script>
-
-@stop
-
-@section('seo')
-@stop
+@endsection

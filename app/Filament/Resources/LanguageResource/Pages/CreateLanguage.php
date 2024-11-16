@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\LanguageResource\Pages;
 
-use Str;
-use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\LanguageResource;
+use Filament\Resources\Pages\CreateRecord;
+use Str;
 
 class CreateLanguage extends CreateRecord
 {

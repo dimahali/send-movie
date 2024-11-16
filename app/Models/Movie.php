@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Facades\Storage;
 use Vinkla\Hashids\Facades\Hashids;
 
 class Movie extends Model
 {
     protected $casts = [
-        'release_date' => 'date'
+        'release_date' => 'date',
+        'videos' => 'array'
     ];
     protected $appends = [
         'icon_image',

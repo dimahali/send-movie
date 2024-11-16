@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\MessageRecipient;
-use App\Models\Movie;
 use App\Models\MovieMessage;
 use Vinkla\Hashids\Facades\Hashids;
 

@@ -81,7 +81,7 @@
                 <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2">
                     <button onclick="fetchMovieMessage()"
                             class="px-3 py-2 bg-green-700 hover:bg-green-600 text-white rounded-md">
-                       Load More
+                        Load More
                     </button>
                 </div>
 
@@ -93,7 +93,7 @@
 
     <script>
         function fetchMovieMessage() {
-            fetch("{{route('post.random.message')}}", {
+            fetch("{{route('api.random.message')}}", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

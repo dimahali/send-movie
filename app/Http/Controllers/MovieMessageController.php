@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMoveMessageRequest;
 use App\Models\MessageRecipient;
+use App\Models\Movie;
 use App\Models\MovieMessage;
 use App\Models\MovieReaction;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Vinkla\Hashids\Facades\Hashids;
@@ -17,8 +19,10 @@ class MovieMessageController extends Controller
     public function create()
     {
         $reactions = MovieReaction::all()->pluck('title', 'id');
-
-        return view('frontend.messages.create', compact('reactions'));
+        $total_movies = Cache::remember('movies_count', 60 * 24, function () {
+            return Movie::count();
+        });
+        return view('frontend.messages.create', compact('reactions', 'total_movies'));
     }
 
     public function store(StoreMoveMessageRequest $request)

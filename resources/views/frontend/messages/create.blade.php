@@ -101,6 +101,7 @@
                                            role="combobox"
                                            aria-controls="options"
                                            aria-expanded="false"
+                                           required
                                     >
                                     <button type="button"
                                             class="absolute inset-y-0 right-0 top-0 flex items-center rounded-r-md px-2 focus:outline-none">
@@ -150,6 +151,9 @@
                                     </template>
                                 </ul>
                                 <input type="hidden" name="movie_id" :value="selectedMovie.id">
+                                <p class="leading-tight text-right text-xs text-gray-600">
+                                    {{formatNumbers($total_movies)}} Movies
+                                </p>
                                 @error('movie_id')
                                 <p class="mt-1 ml-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
@@ -188,6 +192,7 @@
                                         size="4"
                                         name="movie_reaction_id"
                                         class="form-input shrink"
+                                        required
                                 >
                                     @foreach($reactions as $id => $title)
                                         <option class="py-1"
@@ -228,9 +233,17 @@
                         this.movies = [];
                         return;
                     }
-                    fetch(`/movies/search?q=${this.query}`)
+
+                    fetch("{{route('api.movies')}}", {
+                        method: 'POST',
+                        body: JSON.stringify({search_term: this.query}),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        }
+                    })
                         .then(response => response.json())
-                        .then(data => {
+                        .then(data =>{
                             this.movies = data.map(movie => ({
                                 id: movie.id,
                                 title: movie.title,
@@ -261,11 +274,19 @@
                     }
 
                     try {
-                        const response = await fetch(`/api/message-recipients?s=${encodeURIComponent(this.query)}`);
-                        this.filteredSuggestions = await response.json();
-                    } catch (error) {
-                        console.error('Error fetching suggestions:', error);
-                    }
+                        fetch("{{route('api.topics')}}", {
+                            method: 'POST',
+                            body: JSON.stringify({search_term: this.query}),
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                this.filteredSuggestions = data;
+                            });
+                    } catch (error) {}
                 },
 
                 fetchSuggestionsDebounced() {

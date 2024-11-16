@@ -24,7 +24,7 @@ class StoreMoveMessageRequest extends FormRequest
         return [
             'recipient' => 'required|min:3|max:60',
             'movie_id' => 'required|integer|exists:movies,id',
-            'message' => 'required|string|min:3|max:999',
+            'message' => 'required|string|min:4|max:999',
             'movie_reaction_id' => 'required|integer|exists:movie_reactions,id',
         ];
     }

@@ -11,7 +11,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                'sans': ['"Andika"', ...defaultTheme.fontFamily.sans],
+                'sans': ['"Mali"', 'cursive', ...defaultTheme.fontFamily.sans],
             },
         },
     },

@@ -11,20 +11,14 @@
 @section('content')
     <main class="relative min-h-screen">
 
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
-            <div class="mt-8">
-
-                <div class="mx-auto max-w-2xl text-center">
-                    <h1 class="h1" id="recipient">
-                        {{$message->recipient_title}}
-                    </h1>
-                    <p class="mt-6 text-lg leading-8 text-gray-600">
-                        There's someone sending you a movie, they want you to watch this movie and they think you'll
-                        like :)
-                    </p>
-                </div>
-
+        <div class="mx-auto my-8 max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl text-center">
+                <h1 class="h1" id="recipient">
+                    {{$message->recipient_title}}
+                </h1>
+                <p class="mt-6 text-lg leading-8 text-gray-600">
+                    Someone’s sending you a movie they know you’ll love— because it’s exactly your vibe.
+                </p>
             </div>
 
             <div class="mx-auto my-8 max-w-xl">

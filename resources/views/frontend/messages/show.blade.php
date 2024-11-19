@@ -21,8 +21,7 @@
                         {{$message->messageRecipient->title}}
                     </h1>
                     <p class="mt-6 text-lg leading-8 text-gray-600">
-                        There's someone sending you a movie, they want you to watch this movie and they think you'll
-                        like :)
+                        Someone’s sending you a movie they know you’ll love—because it’s exactly your vibe.
                     </p>
                 </div>
 

@@ -3,7 +3,7 @@
     $app_name = config('app.name');
     $title = "Send Message";
     $description = "Send a new Movie Message to Someone.";
-    $social_image = asset('images/logo.png');
+    $social_image = asset('cover.png');
     $route = route('get.message.now');
 @endphp
 @section('title', $title)
@@ -22,7 +22,7 @@
 
             <div class="mx-auto my-8 max-w-xl">
                 <div class="mt-6 text-base text-rose-700 bg-rose-50 border border-rose-200 p-4 rounded-md">
-                    Please note that you are publishing the message anonymously you cannot delete/edit the message after
+                    Please note that you are publishing the message anonymously. You cannot delete/edit the message after
                     publishing.
                 </div>
 
@@ -55,7 +55,7 @@
                         @csrf
                         <div x-data="recipientDropdown()">
                             <label for="recipient" class="form-label">
-                                Recipient
+                                Recipient Name/Topic
                             </label>
 
                             <div class="mt-2 relative">
@@ -95,7 +95,7 @@
                                     <input id="combobox"
                                            type="text"
                                            x-model="query"
-                                           @input.debounce.300ms="fetchMovies"
+                                           @input.debounce.500ms="fetchMovies"
                                            placeholder="Search movie..."
                                            class="form-input"
                                            role="combobox"
@@ -293,7 +293,7 @@
                     clearTimeout(this.debounceTimer);
                     this.debounceTimer = setTimeout(() => {
                         this.fetchSuggestions();
-                    }, 300);
+                    }, 500);
                 },
 
                 showDropdown() {

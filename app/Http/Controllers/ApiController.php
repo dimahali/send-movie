@@ -13,8 +13,7 @@ class ApiController extends Controller
 
         $movies = Movie::query()
             ->where('title', 'like', '%' . $query . '%')
-            ->latest('release_date')
-            ->take(15)
+            ->take(20)
             ->get(['id', 'title', 'release_date']);
 
         return response()->json($movies);
@@ -30,7 +29,7 @@ class ApiController extends Controller
 
         $recipients = DB::table('message_recipients')
             ->where('title', 'like', "%{$search}%")
-            ->take(15)
+            ->take(20)
             ->get(['id', 'title']);
 
         return response()->json($recipients);

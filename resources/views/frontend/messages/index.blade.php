@@ -3,7 +3,7 @@
     $app_name = config('app.name');
     $title = "Messages for $recipient->title";
     $description = "Read all messages sent for $recipient->title from around the world";
-    $social_image = asset('images/logo.png');
+    $social_image = asset('cover.png');
     $route = route('recipient.show', $recipient->slug);
 @endphp
 @section('title', $title)
@@ -46,6 +46,9 @@
                                     <a href="{{route('message.show', $message->slug)}}"
                                        class="block rounded-2xl leading-loose tracking-wide bg-amber-50 hover:bg-amber-100 border border-amber-200 p-4 sm:p-6 text-base"
                                     >
+                                        <div class="text-sm text-amber-700 mb-4">
+                                            For: {{$message->recipient_title}}
+                                        </div>
                                         <div
                                             class="text-center mb-4">
                                             <div
@@ -61,7 +64,7 @@
                                                 Sent {{$message->created_at->diffForHumans()}}
                                             </div>
                                         </div>
-                                        <div class="flex flex-col items-center justify-center gap-2">
+                                        <div class="flex flex-col items-center leading-normal justify-center gap-2">
                                             <h2 class="text-base font-bold text-rose-700 line-clamp-1">
                                                 {{$message->movie->title}}
                                             </h2>

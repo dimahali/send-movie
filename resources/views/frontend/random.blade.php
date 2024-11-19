@@ -3,13 +3,12 @@
     $app_name = config('app.name');
     $title = "Random Message";
     $description = "Read random messages sent by people around the world";
-    $social_image = asset('images/logo.png');
+    $social_image = asset('cover.png');
     $route = route('get.random.message');
 @endphp
 @section('title', $title)
 
 @section('content')
-
     <main class="relative min-h-screen">
 
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -82,7 +81,8 @@
                                          stroke-width="1.5"
                                          stroke="currentColor"
                                          class="size-8">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                     </svg>
                                 </button>
                             </div>
@@ -108,7 +108,7 @@
                     class="text-center text-base">
                     <div
                         class="text-base inline-flex text-center mb-4 rounded-md bg-green-50 border border-green-200 px-3 py-1.5"
-                        >
+                    >
                         {{$message->movieReaction->text}} {{$message->movieReaction->emojis}}
                     </div>
 
@@ -123,7 +123,7 @@
 
                 <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2">
                     <a href="{{route('get.random.message')}}"
-                            class="px-3 py-2 bg-green-700 hover:bg-green-600 text-white rounded-md">
+                       class="px-3 py-2 bg-green-700 hover:bg-green-600 text-white rounded-md">
                         Load More
                     </a>
                 </div>
@@ -153,3 +153,22 @@
         }
     </script>
 @endsection
+@section('seo')
+    <link rel="canonical" href="{{$route}}"/>
+    <meta name="description" content="{{$description}}"/>
+    <meta property="og:url" content="{{$route}}">
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{$title}} | {{$app_name}}"/>
+    <meta property="og:url" content="{{$route}}"/>
+    <meta property="og:image" content="{{$social_image}}"/>
+    <meta property="og:image:alt" content="{{$app_name}}">
+    <meta property="og:description" content="{{$description}}"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta name="twitter:image:alt" content="{{$title}} | {{$app_name}}">
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="{{$title}} | {{$app_name}}"/>
+    <meta name="twitter:description" content="{{$description}}"/>
+    <meta name="twitter:url" content="{{$route}}">
+    <meta name="twitter:creator" content="{{$app_name}}"/>
+    <meta name="twitter:image" content="{{$social_image}}"/>
+@stop

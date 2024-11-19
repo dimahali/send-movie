@@ -3,8 +3,8 @@
 @php
     $app_name = config('app.name');
     $title = "Express Your Feelings Through Movies";
-    $description = "Send your favorite movies to loved ones and express your feelings";
-    $social_image = asset('images/logo.png');
+    $description = "Share your untold words in a personalized way. Express your feelings by sending your favorite movies to loved ones with dedicated messages.";
+    $social_image = asset('cover.png');
     $route = route('home');
 @endphp
 
@@ -47,13 +47,12 @@
                     <div class="text-center">
 
                         <h1 class="h1">
-                            <span class="block xl:inline">A bunch of the untold words,</span>
-                            <span class="block text-gray-700 xl:inline">sent through the MOVIE</span>
+                            <span class="block xl:inline">Untold words,</span>
+                            <span class="block text-gray-700 xl:inline">sent through a movie</span>
                         </h1>
 
                         <p class="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
-                            Express your untold message. Send your favorite movies to loved ones and express your
-                            feelings.
+                            Share your untold words in a personalized way— Express your feelings by sending your favorite movies to loved ones with dedicated messages.
                         </p>
 
                         <div class="mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
@@ -82,7 +81,7 @@
 
         <section class="py-16">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-               <div
+                <div
                     class="mx-auto flex max-w-2xl flex-col gap-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-end">
                     <div
                         class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-700 border border-gray-800 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
@@ -102,7 +101,7 @@
                     </div>
                     <div
                         class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-indigo-700 border border-indigo-800 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
-                        <p class="flex-none text-3xl font-bold tracking-tight text-indigo-50">{{formatNumbers(130248)}}</p>
+                        <p class="flex-none text-3xl font-bold tracking-tight text-indigo-50">{{formatNumbers(100)}}</p>
                         <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
                             <p class="text-lg font-semibold tracking-tight text-indigo-100">Daily Visitors</p>
                             <p class="mt-2 text-base/7 text-indigo-100">We are getting noticed</p>
@@ -130,6 +129,9 @@
                                 <a href="{{route('message.show', $message->slug)}}"
                                    class="block rounded-2xl leading-loose tracking-wide bg-amber-50 hover:bg-amber-100 border border-amber-200 p-4 sm:p-6 text-base"
                                 >
+                                    <div class="text-sm text-amber-700 mb-4">
+                                        For: {{$message->recipient_title}}
+                                    </div>
                                     <div
                                         class="text-center mb-4">
                                         <div
@@ -145,12 +147,12 @@
                                             Sent {{$message->created_at->diffForHumans()}}
                                         </div>
                                     </div>
-                                    <div class="flex flex-col items-center justify-center gap-2">
+                                    <div class="flex flex-col items-center justify-center leading-normal gap-1">
                                         <h2 class="text-base font-bold text-rose-700 line-clamp-1">
                                             {{$message->movie->title}}
                                         </h2>
-                                        <p id="movie-status">{{$message->movie->status}}</p>
-                                        <p id="movie-release-date">{{$message->movie->release_date_formated}}</p>
+                                        <p>{{$message->movie->status}}</p>
+                                        <p>{{$message->movie->release_date_formated}}</p>
                                     </div>
                                 </a>
 
@@ -168,34 +170,22 @@
 @stop
 
 @section('seo')
-    <meta name="description"
-          content="{{$description}}"/>
-
-    <meta name="robots" content="index,follow">
+    <meta name="description" content="{{$description}}"/>
     <meta property="og:url" content="{{$route}}">
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="{{$app_name}} | {{$title}}"/>
     <meta property="og:url" content="{{$route}}"/>
     <meta property="og:image" content="{{$social_image}}"/>
     <meta property="og:image:alt" content="{{$app_name}}">
-    <meta property="og:description"
-          content="{{$description}}"/>
+    <meta property="og:description" content="{{$description}}"/>
     <meta property="og:locale" content="en_US"/>
-
-    <meta name="twitter:image:alt"
-          content="{{$app_name}}">
-
+    <meta name="twitter:image:alt" content="{{$app_name}}">
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:title" content="{{$app_name}} | {{$title}}"/>
-
-    <meta name="twitter:description"
-          content="{{$description}}"/>
-
+    <meta name="twitter:description" content="{{$description}}"/>
     <meta name="twitter:url" content="{{$route}}">
-
     <meta name="twitter:creator" content="{{$app_name}}"/>
     <meta name="twitter:image" content="{{$social_image}}"/>
-
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",

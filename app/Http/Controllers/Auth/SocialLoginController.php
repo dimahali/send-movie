@@ -51,7 +51,6 @@ class SocialLoginController extends Controller
             ]);
         } else {
             $user->update([
-                'name' => $social_auth_account->getName(),
                 'auth_provider_id' => $social_auth_account->getId(),
                 'auth_provider' => $provider,
             ]);

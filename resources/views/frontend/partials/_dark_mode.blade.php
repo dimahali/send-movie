@@ -1,6 +1,6 @@
 <button
                 type="button"
-                x-bind:class="dark_mode ? 'bg-rose-600' : 'bg-gray-200'"
+                x-bind:class="dark_mode ? 'bg-rose-600' : 'bg-stone-200'"
                 x-on:click="dark_mode = !dark_mode"
                 class="relative inline-flex h-6 w-11 mr-4 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-rose-600 focus:ring-offset-2"
                 role="switch"
@@ -9,7 +9,7 @@
                 <span class="sr-only">Dark mode toggle</span>
 
                 <span
-                    x-bind:class="dark_mode ? 'trangray-x-5 bg-gray-700' : 'trangray-x-0 bg-white'"
+                    x-bind:class="dark_mode ? 'trangray-x-5 bg-stone-700' : 'trangray-x-0 bg-white'"
                     class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full shadow ring-0 transition duration-200 ease-in-out"
                 >
                                     <span
@@ -23,7 +23,7 @@
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3 text-gray-400"
+                                            class="h-3 w-3 text-stone-400"
                                             viewBox="0 0 20 20"
                                             fill="currentColor"
                                         >

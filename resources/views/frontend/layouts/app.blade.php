@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-      x-data="{open_search_modal:false }"
+      x-data="{ dark_mode: false, open_search_modal:false }"
+      x-init="
+              if (!('dark_mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                localStorage.setItem('dark_mode', JSON.stringify(true));
+              }
+              dark_mode = JSON.parse(localStorage.getItem('dark_mode'));
+              $watch('dark_mode', value => localStorage.setItem('dark_mode', JSON.stringify(value)))
+              "
       x-cloak
->
+      x-bind:class="{'dark' : dark_mode === true}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,14 +38,14 @@
     @vite(['resources/css/app.css'])
     @yield('styles')
 </head>
-<body class="bg-white dark:bg-slate-800 text-sm sm:text-base">
+<body class="bg-white dark:bg-stone-800 text-sm sm:text-base">
 @include('frontend.partials.header')
 @yield('content')
 @include('frontend.partials.footer')
 <div x-data="{ search: '', results: [] }">
     <div x-show="open_search_modal"
          x-trap="open_search_modal"
-         class="fixed inset-0 z-40 flex items-center justify-center bg-gray-900 bg-opacity-50">
+         class="fixed inset-0 z-40 flex items-center justify-center bg-stone-900 bg-opacity-50">
         <div @click.away="open_search_modal = false; results=[];search=''"
              class="relative bg-transparent rounded-lg shadow-lg w-11/12 max-w-lg">
             <input type="text"
@@ -46,18 +53,18 @@
                    x-model="search"
                    @input.debounce.500ms="fetchResults"
                    placeholder="Start Typing..."
-                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"/>
+                   class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:outline-none focus:border-blue-500"/>
 
-            <div x-show="results.length > 0" class="mt-2 bg-white border border-gray-200 rounded-lg shadow-md">
+            <div x-show="results.length > 0" class="mt-2 bg-white border border-stone-200 rounded-lg shadow-md">
                 <template x-for="result in results" :key="result.id">
-                    <a :href="`/r/${result.slug}`" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                    <a :href="`/r/${result.slug}`" class="block px-4 py-2 text-stone-800 hover:bg-stone-100">
                         <span x-text="result.title"></span>
                     </a>
                 </template>
             </div>
 
             <div x-show="results.length === 0 && search !== ''"
-                 class="mt-2 p-2 text-center bg-white border border-gray-200 rounded-lg shadow-md">
+                 class="mt-2 p-2 text-center bg-white border border-stone-200 rounded-lg shadow-md">
                 No results found
             </div>
         </div>

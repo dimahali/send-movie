@@ -11,14 +11,14 @@
 </head>
 <body class="antialiased">
 <div
-    class="relative flex items-center justify-center min-h-screen bg-slate-100 dark:bg-slate-900 sm:items-center sm:pt-0">
+    class="relative flex items-center justify-center min-h-screen bg-stone-100 dark:bg-stone-900 sm:items-center sm:pt-0">
     <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
         <div class="flex flex-col items-center gap-3">
-            <div class="px-4 text-8xl text-slate-500 tracking-wider">
+            <div class="px-4 text-8xl text-stone-500 tracking-wider">
                 @yield('code')
             </div>
 
-            <div class="ml-4 text-lg text-slate-500 uppercase tracking-wider">
+            <div class="ml-4 text-lg text-stone-500 uppercase tracking-wider">
                 @yield('message')
             </div>
         </div>

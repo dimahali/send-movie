@@ -27,14 +27,14 @@
                 </div>
 
                 @if(session('message_url'))
-                    <div class="my-4 p-4 bg-gray-100 rounded">
-                        <label class="block text-gray-700 font-medium leading-none mb-1">Message URL:</label>
+                    <div class="my-4 p-4 bg-stone-100 rounded">
+                        <label class="block text-stone-700 font-medium leading-none mb-1">Message URL:</label>
                         <div class="flex items-center space-x-2">
                             <input id="message_url"
                                    type="text"
                                    value="{{ session('message_url') }}"
                                    readonly
-                                   class="p-2 rounded bg-gray-50 text-gray-800 border border-gray-300 w-full">
+                                   class="p-2 rounded bg-stone-50 text-stone-800 border border-stone-300 w-full">
                             <button onclick="copyToClipboard()"
                                     class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Copy
                             </button>
@@ -47,7 +47,7 @@
                         {{ session('message') }}
                     </div>
                 @endif
-                <div class="mt-4 bg-gray-50 rounded p-6 border border-gray-200">
+                <div class="mt-4 bg-stone-50 dark:bg-stone-100 rounded p-6 border border-stone-200">
                     <form action="{{route('post.message.now')}}"
                           method="POST"
                           class="flex flex-col gap-y-5"
@@ -105,7 +105,7 @@
                                     >
                                     <button type="button"
                                             class="absolute inset-y-0 right-0 top-0 flex items-center rounded-r-md px-2 focus:outline-none">
-                                        <svg class="h-5 w-5 text-gray-400"
+                                        <svg class="h-5 w-5 text-stone-400"
                                              viewBox="0 0 20 20"
                                              fill="currentColor"
                                              aria-hidden="true">
@@ -124,7 +124,7 @@
                                         <li @click="selectMovie(movie)"
                                             @mouseenter="selectedIndex = index"
                                             @mouseleave="selectedIndex = null"
-                                            class="relative hover:bg-gray-100 cursor-pointer select-none px-6 py-2"
+                                            class="relative hover:bg-stone-100 cursor-pointer select-none px-6 py-2"
                                             role="option"
                                             :aria-selected="selectedMovie.id === movie.id"
                                         >
@@ -133,7 +133,7 @@
                                                  class="block truncate text-amber-900">
                                             </div>
                                             <div x-text="'Release Year: ' + movie.release_date"
-                                                 class="block truncate text-sm text-gray-700">
+                                                 class="block truncate text-sm text-stone-700">
                                             </div>
                                             <div x-show="selectedMovie.id === movie.id"
                                                  class="absolute inset-y-0 left-0 flex items-center pl-0.5 text-lime-700">
@@ -151,7 +151,7 @@
                                     </template>
                                 </ul>
                                 <input type="hidden" name="movie_id" :value="selectedMovie.id">
-                                <p class="leading-tight text-right text-xs text-gray-600">
+                                <p class="leading-tight text-right text-xs text-stone-600">
                                     {{formatNumbers($total_movies)}} Movies
                                 </p>
                                 @error('movie_id')
@@ -179,7 +179,7 @@
                                 @error('message')
                                 <p class="ml-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
-                                <p class="leading-tight text-right text-xs text-gray-600">
+                                <p class="leading-tight text-right text-xs text-stone-600">
                                     Characters Remaining <span x-text="max_characters - message.length"></span>
                                 </p>
                             </div>

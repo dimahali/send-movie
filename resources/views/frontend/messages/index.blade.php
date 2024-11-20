@@ -20,7 +20,7 @@
                     <h1 class="h1" id="recipient">
                         {{$recipient->title}}
                     </h1>
-                    <p class="mt-6 text-lg leading-8 text-gray-600">
+                    <p class="mt-6 text-lg leading-8 text-stone-600 dark:text-stone-300">
                         Here are the messages and movies received for {{$recipient->title}} :)
                     </p>
                 </div>
@@ -44,7 +44,7 @@
                                 <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
 
                                     <a href="{{route('message.show', $message->slug)}}"
-                                       class="block rounded-2xl leading-loose tracking-wide bg-amber-50 hover:bg-amber-100 border border-amber-200 p-4 sm:p-6 text-base"
+                                       class="block rounded-2xl leading-loose tracking-wide bg-amber-50 dark:bg-amber-100 dark:hover:bg-amber-50 hover:bg-amber-100 border border-amber-200 p-4 sm:p-6 text-base"
                                     >
                                         <div class="text-sm text-amber-700 mb-4">
                                             For: {{$message->recipient_title}}
@@ -56,7 +56,7 @@
                                                 {{$message->movieReaction->text}} {{$message->movieReaction->emojis}}
                                             </div>
 
-                                            <blockquote class="text-lg text-gray-700 text-center">
+                                            <blockquote class="text-lg text-stone-700 text-center">
                                                 {{$message->short_message}}
                                             </blockquote>
 

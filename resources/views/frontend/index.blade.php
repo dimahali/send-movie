@@ -12,8 +12,7 @@
 
 @section('content')
     <main class="min-h-[90vh]">
-        <section id="intro" class="scroll-mt-[var(--navbar-height)] relative overflow-hidden bg-gray-50">
-
+        <section id="intro" class="scroll-mt-[var(--navbar-height)] relative overflow-hidden bg-stone-50 dark:bg-stone-700">
             <div class="hidden sm:absolute sm:inset-y-0 sm:block sm:h-full sm:w-full" aria-hidden="true">
                 <div class="relative mx-auto h-full max-w-7xl">
                     <svg class="absolute right-full translate-x-1/4 translate-y-1/4 transform lg:translate-x-1/2"
@@ -21,7 +20,7 @@
                         <defs>
                             <pattern id="4522f7d5-8e8c-43ee-89bd-ad34cbfb07fa" x="0" y="0" width="20" height="20"
                                      patternUnits="userSpaceOnUse">
-                                <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor"/>
+                                <rect x="0" y="0" width="4" height="4" class="text-stone-200 dark:text-stone-600" fill="currentColor"/>
                             </pattern>
                         </defs>
                         <rect width="404" height="784" fill="url(#4522f7d5-8e8c-43ee-89bd-ad34cbfb07fa)"/>
@@ -32,7 +31,7 @@
                         <defs>
                             <pattern id="5d0dd344-b041-4d26-bec4-8d33ea57ec9b" x="0" y="0" width="20" height="20"
                                      patternUnits="userSpaceOnUse">
-                                <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor"/>
+                                <rect x="0" y="0" width="4" height="4" class="text-stone-200 dark:text-stone-600" fill="currentColor"/>
                             </pattern>
                         </defs>
                         <rect width="404" height="784" fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"/>
@@ -41,20 +40,15 @@
             </div>
 
             <div class="relative py-16">
-
                 <div class="mx-auto max-w-3xl px-6 sm:px-8">
-
                     <div class="text-center">
-
                         <h1 class="h1">
-                            <span class="block xl:inline">Untold words,</span>
-                            <span class="block text-gray-700 xl:inline">sent through a movie</span>
+                            <span class="block dark:text-rose-400 xl:inline">Untold words,</span>
+                            <span class="block text-stone-700 dark:text-stone-100 xl:inline">sent through a movie</span>
                         </h1>
-
-                        <p class="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
+                        <p class="mx-auto mt-3 max-w-md text-base text-stone-600 dark:text-stone-300 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
                             Share your untold words in a personalized way— Express your feelings by sending your favorite movies to loved ones with dedicated messages.
                         </p>
-
                         <div class="mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
                             <div class="rounded-md shadow">
                                 <a href="{{route('get.message.now')}}"
@@ -65,18 +59,16 @@
                             <div class="mt-3 rounded-md shadow sm:ml-3 sm:mt-0">
                                 <button
                                     @click="open_search_modal=true"
-                                    class="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-rose-600 hover:bg-gray-50 md:px-10 md:py-4 md:text-lg">
+                                    class="flex w-full items-center justify-center rounded-md border border-transparent bg-white dark:bg-stone-900 px-8 py-3 text-base font-medium text-rose-600 dark:text-white hover:bg-stone-50 md:px-10 md:py-4 md:text-lg">
                                     Browse
                                 </button>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
 
             </div>
-
         </section>
 
         <section class="py-16">
@@ -84,11 +76,11 @@
                 <div
                     class="mx-auto flex max-w-2xl flex-col gap-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-end">
                     <div
-                        class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-700 border border-gray-800 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
-                        <p class="flex-none text-3xl font-bold tracking-tight text-gray-50">{{formatNumbers($total_messages)}}</p>
+                        class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-stone-700 border border-stone-800 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
+                        <p class="flex-none text-3xl font-bold tracking-tight text-stone-50">{{formatNumbers($total_messages)}}</p>
                         <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
-                            <p class="text-lg font-semibold tracking-tight text-gray-100">Messages Sent</p>
-                            <p class="mt-2 text-base/7 text-gray-100">You are loving it</p>
+                            <p class="text-lg font-semibold tracking-tight text-stone-100">Messages Sent</p>
+                            <p class="mt-2 text-base/7 text-stone-100">You are loving it</p>
                         </div>
                     </div>
                     <div
@@ -111,7 +103,7 @@
             </div>
         </section>
 
-        <section class="scroll-mt-[var(--navbar-height)] py-16 bg-gray-50">
+        <section class="scroll-mt-[var(--navbar-height)] py-16 bg-stone-50 dark:bg-stone-900">
 
             <div class="mx-auto text-center max-w-3xl px-6 lg:px-8">
 
@@ -127,7 +119,7 @@
                             <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
 
                                 <a href="{{route('message.show', $message->slug)}}"
-                                   class="block rounded-2xl leading-loose tracking-wide bg-amber-50 hover:bg-amber-100 border border-amber-200 p-4 sm:p-6 text-base"
+                                   class="block rounded-2xl leading-loose tracking-wide bg-amber-50 dark:bg-amber-100 dark:hover:bg-amber-50 hover:bg-amber-100 border border-amber-200 p-4 sm:p-6 text-base"
                                 >
                                     <div class="text-sm text-amber-700 mb-4">
                                         For: {{$message->recipient_title}}
@@ -139,7 +131,7 @@
                                             {{$message->movieReaction->text}} {{$message->movieReaction->emojis}}
                                         </div>
 
-                                        <blockquote class="text-lg text-gray-700 text-center">
+                                        <blockquote class="text-lg text-stone-700 text-center">
                                             {{$message->short_message}}
                                         </blockquote>
 

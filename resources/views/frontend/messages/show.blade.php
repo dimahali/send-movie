@@ -57,7 +57,7 @@
                         @foreach($message->movie->videos as $video)
                             @if(isset($video['source']) && $video['source'] === 'youtube')
                                 <button
-                                    class="branding-badge"
+                                    class="branding-badge line-clamp-1"
                                     @click="openVideoModal('https://www.youtube.com/embed/{{$video['key']}}', '{{$video['name']}}')"
                                 >
                                     Watch {{$video['name']}}
@@ -72,7 +72,7 @@
                         class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
                         <div class="rounded-lg overflow-hidden w-11/12 md:w-3/4 lg:w-1/2 aspect-video">
                             <div class="flex justify-between items-center px-4 py-2 bg-stone-800 text-white">
-                                <div class="text-lg" x-text="video_title"></div>
+                                <div class="text-lg line-clamp-1" x-text="video_title"></div>
                                 <button
                                     @click="closeVideoModal"
                                     class="text-white hover:text-stone-400"

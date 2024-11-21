@@ -10,6 +10,7 @@ class RandomMessageController extends Controller
     {
         $message = MovieMessage::inRandomOrder()
             ->with([
+                'user',
                 'movie',
                 'movieReaction',
                 'messageRecipient'

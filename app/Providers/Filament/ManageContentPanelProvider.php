@@ -53,9 +53,9 @@ class ManageContentPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->brandLogo(asset('images/logo_sm.webp'))
+            ->brandLogo(asset('apple-icon-152x152.png'))
             ->brandLogoHeight('3rem')
-            ->favicon(asset('images/logo_medium.webp'))
+            ->favicon(asset('apple-icon-152x152.png'))
             ->plugin(
                 BreezyCore::make()
                           ->myProfile(

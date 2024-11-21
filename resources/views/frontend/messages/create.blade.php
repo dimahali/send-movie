@@ -21,10 +21,21 @@
             </div>
 
             <div class="mx-auto my-8 max-w-xl">
-                <div class="mt-6 text-base text-rose-700 bg-rose-50 border border-rose-200 p-4 rounded-md">
-                    Please note that you are publishing the message anonymously. You cannot delete/edit the message after
-                    publishing.
-                </div>
+                @guest
+                    <div class="mt-4 text-base text-rose-700 bg-rose-50 border border-rose-200 p-4 rounded-md">
+                        Please note that you are publishing the message anonymously. You cannot delete/edit the message
+                        after publishing. To save your messages login using following links.
+                    </div>
+                    <div class="mt-4 flex items-center justify-center gap-2">
+                        @include('frontend.partials._social_auth')
+                    </div>
+                @endguest
+                @auth
+                    <div class="mt-4 text-base text-lime-700 bg-lime-50 border border-lime-200 p-4 rounded-md">
+                        <span class="font-bold">{{auth()->user()->name}}</span>, you are creating a new new message. You
+                        can view your submitted messages in your account.
+                    </div>
+                @endauth
 
                 @if(session('message_url'))
                     <div class="my-4 p-4 bg-stone-100 rounded">
@@ -205,6 +216,18 @@
                             </div>
                         </div>
 
+                        @auth
+                            <div class="flex items-center justify-end space-x-2">
+                                <input
+                                    id="show_sender"
+                                    type="checkbox"
+                                    name="show_sender"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                                    @checked(old('show_sender', ''))
+                                >
+                                <label for="show_sender" class="text-sm font-medium text-gray-900">Show my name as sender</label>
+                            </div>
+                        @endauth
                         <div class="text-right">
                             <button type="submit"
                                     class="text-base rounded-md bg-lime-600 px-3 py-2 text-white shadow-sm hover:bg-lime-500">
@@ -243,7 +266,7 @@
                         }
                     })
                         .then(response => response.json())
-                        .then(data =>{
+                        .then(data => {
                             this.movies = data.map(movie => ({
                                 id: movie.id,
                                 title: movie.title,
@@ -286,7 +309,8 @@
                             .then(data => {
                                 this.filteredSuggestions = data;
                             });
-                    } catch (error) {}
+                    } catch (error) {
+                    }
                 },
 
                 fetchSuggestionsDebounced() {

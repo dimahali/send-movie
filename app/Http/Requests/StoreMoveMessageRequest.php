@@ -26,6 +26,7 @@ class StoreMoveMessageRequest extends FormRequest
             'movie_id' => 'required|integer|exists:movies,id',
             'message' => 'required|string|min:4|max:999',
             'movie_reaction_id' => 'required|integer|exists:movie_reactions,id',
+            'show_sender' => 'nullable'
         ];
     }
 }

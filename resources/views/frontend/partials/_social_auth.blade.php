@@ -1,5 +1,5 @@
 <a href="{{route('auth.redirect', ['facebook', 'go' => request('go')])}}"
-   class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2"
+   class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55"
    aria-label="Sign in with Facebook">
     <svg class="mr-2 -ml-1 size-4"
          aria-hidden="true"
@@ -15,7 +15,7 @@
     Sign in with Facebook
 </a>
 <a href="{{route('auth.redirect', ['google', 'go' => request('go')])}}"
-   class="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+   class="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55"
    aria-label="Sign in with Google">
     <svg class="mr-2 -ml-1 size-4"
          aria-hidden="true"

@@ -20,7 +20,7 @@ class RecipientController extends Controller
 
         $movie_messages = MovieMessage::query()
             ->where('message_recipient_id', $recipient->id)
-            ->with(['movie', 'movieReaction'])
+            ->with(['movie', 'user', 'movieReaction'])
             ->latest()
             ->simplePaginate(30);
 

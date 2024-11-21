@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
         $movie_messages = MovieMessage::query()
             ->inRandomOrder()
-            ->with(['movie', 'movieReaction', 'messageRecipient'])
+            ->with(['movie', 'user', 'movieReaction', 'messageRecipient'])
             ->take(30)
             ->get();
 

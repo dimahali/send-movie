@@ -21,7 +21,12 @@
                         {{$message->messageRecipient->title}}
                     </h1>
                     <p class="mt-6 text-lg leading-8 text-stone-600 dark:text-stone-300">
-                        Someone’s sending you a movie they know you’ll love—because it’s exactly your vibe.
+                        @if($message->show_sender)
+                            You have a new movie suggestion from <strong>{{$message->user->name}}</strong>. {{$message->user->name}}
+                            thinks you’ll love it, because it’s exactly your vibe.
+                        @else
+                            Someone’s sending you a movie they know you’ll love—because it’s exactly your vibe.
+                        @endif
                     </p>
                 </div>
 
@@ -29,7 +34,8 @@
 
             <div class="mx-auto text-center my-8 max-w-xl">
 
-                <div class="inline-flex gap-4 bg-amber-50 dark:bg-amber-100 border border-amber-100 rounded-md shadow p-4">
+                <div
+                    class="inline-flex gap-4 bg-amber-50 dark:bg-amber-100 border border-amber-100 rounded-md shadow p-4">
                     <div class="shrink-0">
                         <img src="{{$message->movie->icon_image}}"
                              class="max-w-28 max-h-42 rounded-md"
@@ -83,7 +89,8 @@
                                          stroke-width="1.5"
                                          stroke="currentColor"
                                          class="size-8">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                     </svg>
                                 </button>
                             </div>

@@ -23,7 +23,7 @@ Route::get('/random-message', [RandomMessageController::class, 'index'])->name('
 
 Route::middleware('auth')->group(function () {
     Route::get('/my-messages', function (){
-        return view('');
+        return '';
     })->name('user.messages');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

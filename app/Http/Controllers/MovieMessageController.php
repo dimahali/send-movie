@@ -47,6 +47,10 @@ class MovieMessageController extends Controller
             $model->recipient_title = $recipient->title;
             $model->message = $message;
 
+            if (auth()->check()){
+                $model->show_sender = request()->filled('show_sender');
+            }
+
             $model->save();
 
             DB::commit();
@@ -80,7 +84,7 @@ class MovieMessageController extends Controller
 
         $message = MovieMessage::query()
             ->where('id', $id[0])
-            ->with(['movie', 'movieReaction', 'messageRecipient'])
+            ->with(['movie', 'user', 'movieReaction', 'messageRecipient'])
             ->firstOrFail();
 
         return view('frontend.messages.show', compact('message'));

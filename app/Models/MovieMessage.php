@@ -10,6 +10,9 @@ use Vinkla\Hashids\Facades\Hashids;
 
 class MovieMessage extends Model
 {
+    protected $casts = [
+        'show_sender' => 'boolean'
+    ];
     protected $appends = [
         'message_date',
         'short_message',

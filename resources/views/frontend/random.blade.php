@@ -17,12 +17,16 @@
                     {{$message->recipient_title}}
                 </h1>
                 <p class="mt-6 text-lg leading-8 text-stone-600 dark:text-stone-300">
-                    Someone’s sending you a movie they know you’ll love— because it’s exactly your vibe.
+                    @if($message->show_sender)
+                        You have a new movie suggestion from <strong>{{$message->user->name}}</strong>. {{$message->user->name}}
+                        thinks you’ll love it, because it’s exactly your vibe.
+                    @else
+                        Someone’s sending you a movie they know you’ll love—because it’s exactly your vibe.
+                    @endif
                 </p>
             </div>
 
             <div class="mx-auto my-8 max-w-xl">
-
                 <div class="flex gap-4 bg-amber-50 dark:bg-amber-100 border border-amber-100 rounded-md shadow p-4">
                     <div class="shrink-0">
                         <img src="{{$message->movie->icon_image}}"
@@ -41,7 +45,6 @@
                         <p>{{$message->movie->release_date_formated}}</p>
                     </div>
                 </div>
-
             </div>
 
             @if($message->movie->videos)

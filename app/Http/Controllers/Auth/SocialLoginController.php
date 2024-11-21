@@ -33,7 +33,7 @@ class SocialLoginController extends Controller
 
         $this->loginOrCreateUser($social_auth_account, $provider);
 
-        return redirect()->intended('home');
+        return redirect()->intended();
     }
 
     private function loginOrCreateUser($social_auth_account, $provider)

@@ -169,10 +169,10 @@ class DatabaseSeeder extends Seeder
 
         try {
             $user = User::firstOrCreate([
-                'email' => 'dimah.ali92@gmail.com'
+                'email' => 'demo@send.movie'
             ], [
-                'name' => 'Hamid Ali',
-                'password' => bcrypt('n0passw0rd'),
+                'name' => 'Demo Account',
+                'password' => bcrypt('password'),
                 'email_verified_at' => now(),
                 'user_type' => UserType::ADMIN
             ]);
